@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <legend>Become a Contributor by registering your details</legend>
+<br>
+<br>
+<form action="/update/{{contributor.id}}/" method="POST">
+    First Name: <input type="text", name="first_name", id="first_name", value="{{contributor.first_name}}">
+    <br>
+    <br>
+    Last Name: <input type="text", name="last_name", id="last_name" value="{{contributor.last_name}}">
+    <br>
+    <br>
+    Email: <input type="text", name="email", id="email" value="{{contributor.email}}">
+    <br>
+    <br>
+    Username: <input type="text", name="username", id="username" value="{{contributor.username}}">
+    <br>
+    <br>
+    Password: <input type="text", name="password", id="password" value="{{contributor.password}}">
+    <br>
+    <br>
+    Confirm Password: <input type="text", name="confirm_password", id="confirm_password" value="{{contributor.confirm_password}}">
+    <br>
+    <br>
+    Age: <input type="number", name="age", id="age">
+    <br>
+    <br>
+    Gender: <select name="gender" id="gender">
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Save</button>
+    <!-- <input type="submit", value="Register"> -->
+</form>
+
+<br>
+<!-- <table>
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for contributor in contributors %}
+        <tr>
+            <td>{{contributor.first_name}}</td>
+            <td>{{contributor.last_name}}</td>
+            <td>{{contributor.username}}</td>
+            <td>{{contributor.email}}</td>
+            <td>{{contributor.age}}</td>
+            <td>{{contributor.gender}}</td>
+            <td><a href="/update/{{contributor.id}}/"></a>edit</td>
+            <td><a href=""></a>delete</td>
+        </tr>
+        {% endfor %} -->
+
+    </tbody>
+</table>
+</body>
+</html>

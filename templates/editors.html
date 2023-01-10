@@ -1,0 +1,12 @@
+<title>Editors</title>
+{% extends 'layout.html' %}
+{% block content %}
+</head>
+<body>
+{% for contributor in contributors %}
+{{contributor.first_name}} {{contributor.last_name}} {{contributor.username}} {{contributor.email}} {{contributor.age}} {{contributor.gender}}
+<br>
+{% endfor %}    
+</body>
+{% endblock %}
+

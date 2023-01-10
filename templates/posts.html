@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+
+<title>Posts</title> 
+
+
+{% block content %}
+<h1>All Posts</h1>
+
+    <hr>
+    <h2>Create New Blog Post:</h2>
+    {% for post in post %}
+        <h2>{{post.title}}</h2>
+
+        {% if post.author %}
+            <h3>By: {{ post.author }}</h3>
+        {% else %}
+            <h3>By: N/A</h3>
+        {% endif %}
+        
+        <p>{{ post.content }}</p>
+        <a href='/posts/delete/{{post.id}}'>Delete</a>
+        <a href='/posts/edit/{{post.id}}'>Edit</a>
+        <hr>
+    {% endfor %}
+    <form action='/posts' method='POST'>
+        Title: <input type='text' name='title' id='title', value="{{ post.title }}">
+        <br>
+        Author: <input type='text' name='author' id='author' value="{{ post.author }}">
+        <br>
+        Post: <input type='text' name='content' id='content'  value="{{ post.content }}">
+        <br>
+        <input type='submit' value='Post'>
+    </form>
+
+    <hr>
+
+
+
+{% endblock content %}

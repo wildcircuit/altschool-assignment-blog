@@ -1,79 +1,52 @@
+<title>Sign Up</title>
 {% extends 'layout.html' %}
 {% block content %}
-<div>
-<form method="'POST" action="/register">
-    {{ form.hidden_tag() }}
-    <fieldset>
-            <legend>Become a Contributor Today</legend>
-
-
+<body>
+    
+    <legend>Become a Contributor by registering your details</legend>
 <br>
 <br>
-
-            <div>
-                {{ form.username.label }}
-                {% if form.username.errors %}
-                    {{ form.username(class="is-invalid") }}
-                        <div>class="invalid feedback"
-                            {% for error in form.username.errors %}
-                                <span>{{ errors }}</span>
-                            {% endfor %}
-                         </div>
-                {% else %}
-                    {{ form.username }}
-                {% endif %}
-            </div>
-            <div>
-                {{ form.email.label }}
-                {% if form.email.errors %}
-                    {{ form.email(class="is-invalid") }}
-                        <div>class="invalid feedback"
-                            {% for error in form.email.errors %}
-                                <span>{{ errors }}</span>
-                            {% endfor %}
-                         </div>
-                {% else %}
-                    {{ form.email }}
-                {% endif %}
-            </div>
-            <div>
-                {{ form.password.label }}
-                {% if form.password.errors %}
-                    {{ form.password(class="is-invalid") }}
-                        <div>class="invalid feedback"
-                            {% for error in form.password.errors %}
-                                <span>{{ errors }}</span>
-                            {% endfor %}
-                         </div>
-                {% else %}
-                    {{ form.password }}
-                {% endif %}
-            </div>
-            <div>
-                {{ form.confirm_password.label }}
-                {% if form.confirm_password.errors %}
-                    {{ form.confirm_password(class="is-invalid") }}
-                        <div>class="invalid feedback"
-                            {% for error in form.confirm_password.errors %}
-                                <span>{{ errors }}</span>
-                            {% endfor %}
-                         </div>
-                {% else %}
-                    {{ form.confirm_password }}
-                {% endif %}
-            </div>
-    </fieldset>
-    <div>
-    {{ form.submit }}
-    </div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <p class="message">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% for contributor in contributors %}
+<form action="{{url_for('create_contributors')}}", method="POST">
+    First Name: <input type="text", name="first_name", id="first_name">
+    <br>
+    <br>
+    Last Name: <input type="text", name="last_name", id="last_name">
+    <br>
+    <br>
+    Email: <input type="text", name="email", id="email">
+    <br>
+    <br>
+    Username: <input type="text", name="username", id="username">
+    <br>
+    <br>
+    Password: <input type="password", name="password", id="password">
+    <br>
+    <br>
+    Confirm Password: <input type="password", name="confirm_password", id="confirm_password">
+    <br>
+    <br>
+    Age: <input type="number", name="age", id="age">
+    <br>
+    <br>
+    Gender: <select name="gender" id="gender">
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Sign Up</button>
 </form>
-</div>
-<div>
-    <small>
-        Already a Contributor? <a href="{{ url_for('login') }}">Sign In</a>
-    </small>
-</div>
-
-{% endblock content %}
-
-
+{% endfor %}
+<br>
+<small>
+    Alreay have an account? <a href="{{ url_for('login') }}">Register Here</a>
+</small>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <legend>Become a Contributor by registering your details</legend>
+<br>
+
+<br>
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Password</th>
+        <th>Confirm_password</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for contributor in contributors %}
+        <tr>
+            <td>{{contributor.first_name}}</td>
+            <td>{{contributor.last_name}}</td>
+            <td>{{contributor.username}}</td>
+            <td>{{contributor.email}}</td>
+            <td>{{contributor.age}}</td>
+            <td>{{contributor.gender}}</td>
+            <td>{{contributor.password}}</td>
+            <td>{{contributor.confirm_password}}</td>
+            <td><a href="/update/{{contributor.id}}">edit</a></td>
+            <td><a href="/delete/{{contributor.id}}">delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>

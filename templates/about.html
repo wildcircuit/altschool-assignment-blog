@@ -1,4 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>here we learn about the authors</h1>
+{% if current_user.is_authenticated %}
+    <h1>Welcome you are authenticated</h1>
+    <a href="{{url_for('posts')}}">Proceed to blog</a>
+{% else %}
+        <h1>Welcome!! Please Login to access blog</h1>
+
+    <small>
+        Alreay have an account? <a href="{{ url_for('login') }}">Login Here</a>
+    </small>
+    <br>
+    <br>
+    <small>
+        Don't have an account? <a href="{{ url_for('create_contributors') }}">Register Here</a>
+    </small>
+{% endif %}
 {% endblock %}
